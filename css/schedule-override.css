@@ -1,0 +1,5 @@
+/* Schedule overrides: small, focused file for tuning event schedule styles */
+/* Adjust the date text size here so it's quick to change without editing the main stylesheet */
+.sc_tab_cont .sp_cont .meta-box span {
+  font-size: 16px; /* change to desired size (px/rem) */
+}
