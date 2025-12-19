@@ -6330,7 +6330,8 @@ body.modal-active .winners-section {
 
 /* Show ONLY active slide */
 .hero-area.active {
-  display: flex !important;   /* flex because alignment venum */
+  display: block !important;   /* flex because alignment venum */
 }
+
 
 }
