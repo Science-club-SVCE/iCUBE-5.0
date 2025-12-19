@@ -5367,21 +5367,6 @@ nav .main-menu2 li a::before {
     object-fit: cover;
 }
 /* FIX OVAL IMAGE ISSUE – MOBILE ONLY */
-@media (max-width: 768px) {
-    .student-card .img-box {
-        width: 150px;
-        height: 150px;      /* 🔥 force equal */
-        overflow: hidden;  /* 🔥 important */
-    }
-
-    .student-card .img-box img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-        display: block;
-    }
-}
 
 /* Centering text */
 .student-card .cont-box {
@@ -6076,41 +6061,276 @@ body.modal-active .winners-section {
     margin: 6px 0 4px;
 }
 
+
+
+/* =========================
+   HERO CLEAN OVERRIDE
+========================= */
+
+.hero-slider-wrapper {
+  position: relative;
+  min-height: 600px;
+}
+
+.hero-slider-active {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* SLIDE */
+.hero-area {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease;
+}
+
+.hero-area.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* CONTENT */
+.hero-left {
+  z-index: 5;
+}
+
+.hero-right,
+.hero-rightr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMAGE */
+.hero-right img,
+.hero-rightr img {
+  max-width: 420px;
+  width: 100%;
+}
+
+/* =========================
+   MOBILE FIX (MAIN PART)
+========================= */
 @media (max-width: 768px) {
 
-  /* 🔥 OVERRIDE BOOTSTRAP d-none */
-  .hero-slider-wrapper .hero-area .col-lg-6.d-none.d-lg-block {
+  .hero-slider-wrapper,
+  .hero-slider-active {
+    height: auto;
+    min-height: 520px;
+  }
+
+  .hero-area {
+    position: relative;
+    padding-bottom: 140px; /* space for image */
+  }
+
+  .hero-left {
+    width: 100%;
+    padding: 20px;
+    padding-right: 20px;
+    text-align: left;
+  }
+
+  .hero-left h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-left h4 {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* FORCE IMAGE VISIBLE */
+  .hero-right,
+  .hero-rightr {
     display: block !important;
-    position: absolute !important;
-    right: 12px !important;
-    bottom: 12px !important;
-    width: 30% !important;      /* image = 1/4 area */
-    max-width: 160px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    z-index: 2 !important;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 35%;
+    max-width: 140px;
+    z-index: 2;
+    opacity: 0.95;
   }
 
-  /* IMAGE inside that column */
-  .hero-slider-wrapper .hero-area .hero-right img,
-  .hero-slider-wrapper .hero-area .hero-rightr img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
+  .hero-right img,
+  .hero-rightr img {
+    width: 100%;
+    height: auto;
   }
 
-  /* TEXT AREA – 3/4 width */
-  .hero-slider-wrapper .hero-area .hero-left {
-    padding-right: 35% !important;
-    position: relative !important;
-    z-index: 3 !important;
-  }
-
-  /* Remove shapes on mobile (already done, keep it) */
+  /* SHAPES OFF (CLEAN) */
   .hero_shapes {
-    display: none !important;
+    display: none;
   }
 }
 
+/* =========================
+   DOTS FIX
+========================= */
+.hero-slider-dots {
+  position: absolute !important;
+  bottom: 15px !important;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+/* =========================
+   HERO FINAL FIX
+========================= */
+
+.hero-area {
+  display: none;
+  align-items: center;
+  min-height: 600px;
+}
+
+.hero-area.active {
+  display: flex;
+}
+
+/* IMAGE DESKTOP */
+.hero-image img {
+  max-width: 420px;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
 
 
+/* =================================
+   HERO SLIDER – FINAL VISIBILITY LOCK
+================================= */
+
+
+/* Mobile safety: never show non-active */
+
+
+@media (max-width: 768px) {
+
+    .student-card {
+    width: 90vw !important;     /* 🔥 KEY */
+    max-width: 360px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Ensure inner card stretches */
+  .student-card .single-testi {
+    width: 100%;
+  }
+  /* BIG PERFECT CIRCLE */
+  .student-card .img-box {
+    width: min(220px, 70vw) !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+
+    border-radius: 50% !important;
+    overflow: hidden !important;
+
+    margin: 0 auto 18px !important;
+  }
+
+  .student-card .img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block;
+  }
+
+  /* Center text only */
+  .student-card .cont-box {
+    text-align: center;
+  }
+}
+/* ==================================
+   STUDENT CAROUSEL – CARD WIDTH FIX
+================================== */
+
+/* ==================================
+   STUDENT IMAGE – SIZE INCREASE FIX
+================================== */
+@media (max-width: 768px) {
+
+  .student-card .img-box {
+    width: 150px !important;     /* 🔥 INCREASE HERE */
+    height: 300px !important;    /* 🔥 INCREASE HERE */
+    max-width: 80vw !important;  /* responsive */
+    max-height: 80vw !important;
+
+    margin: 0 auto 20px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+  }
+
+  .student-card .img-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+  }
+}
+
+/* =========================
+   MOBILE BEHAVIOUR
+========================= */
+@media (max-width: 768px) {
+
+  .hero-area {
+    position: relative;
+    min-height: 520px;
+    padding-bottom: 80px;
+  }
+
+  .hero-left {
+    width: 100%;
+    padding: 20px;
+    z-index: 2;
+    padding-top: 20px !important ;
+  }
+
+  /* Hide ALL images by default */
+  .hero-image {
+    display: none;
+  }
+
+  /* Show image ONLY for active slide */
+  .hero-area.active .hero-image {
+    display: block;
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    width: 35%;
+    max-width: 140px;
+    z-index: 1;
+    opacity: 0.95;
+  }
+
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+  .hero-image.clg img{
+    display: none;
+}
+  /* Remove shapes */
+  .hero_shapes {
+    display: none;
+  }
+  .hero-area {
+  display: none !important;
+}
+
+/* Show ONLY active slide */
+.hero-area.active {
+  display: flex !important;   /* flex because alignment venum */
+}
+
+}
