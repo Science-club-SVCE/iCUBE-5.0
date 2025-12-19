@@ -6111,4 +6111,19 @@ body.modal-active .winners-section {
     display: none !important;
   }
 }
+/* FAQ accordion icon fix */
+.card-header a::after {
+    content: "+";
+    float: right;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff3b5c;
+    transition: transform 0.25s ease;
+}
+
+/* Expanded state */
+.card-header a:not(.collapsed)::after {
+    content: "−";
+}
+
 
