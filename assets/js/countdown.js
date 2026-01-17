@@ -3,7 +3,7 @@
 
   // 1. Set your date here
   // Note: I set it to 2026 for testing. Change back to 2025 for your event.
-  var countDownDate = new Date("Jan 17, 2026 12:00:00").getTime();
+  var countDownDate = new Date("Jan 18, 2026 00:00:00").getTime();
 
   function updateCard(id, newValue) {
     var card = document.getElementById(id);
@@ -86,4 +86,5 @@
 
   startFlipCountdown();
 })(jQuery);
+
 
